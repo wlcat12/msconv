@@ -71,6 +71,7 @@ def check_ffmpeg():
                 print(f"Автоустановка ffmpeg невозможна для архитектуры: {machine}")
                 sys.exit(1)
 
+            # Проверка на ARM64 Win10, т.к она не умеет в эмуляцию x64 (потом уберу, когда найду msi устанощик для arm64)
             if win_ver.major == 10 and machine in ("arm64", "aarch64"):
                 print("Ошибка: ffmpeg не найден. Пожалуйста, установите ffmpeg и добавьте его в PATH. Автоустановка ffmpeg не поддерживается на Windows 10 на ARM64")
                 sys.exit(1)
