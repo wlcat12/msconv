@@ -71,6 +71,10 @@ def check_ffmpeg():
                 print(f"Автоустановка ffmpeg невозможна для архитектуры: {machine}")
                 sys.exit(1)
 
+            if win_ver.major == 10 and machine in ("arm64", "aarch64"):
+                print("Ошибка: ffmpeg не найден. Пожалуйста, установите ffmpeg и добавьте его в PATH. Автоустановка ffmpeg не поддерживается на Windows 10 на ARM64")
+                sys.exit(1)
+
             choice = input("ffmpeg не найден. Установить автоматически? (Y/n): ").strip().lower()
             if choice in ("", "y", "yes"):
                 install_ffmpeg_on_windows()
